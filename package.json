@@ -1,0 +1,26 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node --transpile-only --project src/tsconfig.json src/main.ts"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "fs-extra": "^8.1.0",
+    "puppeteer": "^2.0.0",
+    "query-string": "^6.9.0"
+  },
+  "devDependencies": {
+    "@magicspace/configs": "^0.2.3",
+    "@types/cheerio": "^0.22.15",
+    "@types/fs-extra": "^8.0.1",
+    "@types/node": "^13.1.0",
+    "@types/puppeteer": "^2.0.0",
+    "ts-node": "^8.5.4",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.4"
+  }
+}
