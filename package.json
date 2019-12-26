@@ -13,7 +13,6 @@
     "fast-csv": "^3.7.0",
     "fs-extra": "^8.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^2.0.0",
     "query-string": "^6.9.0"
   },
   "devDependencies": {
@@ -22,7 +21,6 @@
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^13.1.0",
     "@types/progress": "^2.0.3",
-    "@types/puppeteer": "^2.0.0",
     "ts-node": "^8.5.4",
     "tslib": "^1.10.0",
     "typescript": "^3.7.4"
