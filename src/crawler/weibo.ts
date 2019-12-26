@@ -77,6 +77,10 @@ export function extractWeiboItemFromHTML(html: string): WeiboItem[] {
     let content = $element.find('.ctt').text();
     content = filterHTMLTags(content);
 
+    if (content.startsWith('该账号因被投诉违反《微博社区公约》的相关规定')) {
+      return;
+    }
+
     let $commentCount = $element.find('a.cc');
 
     let commentCountText = $commentCount
@@ -127,12 +131,43 @@ export function extractWeiboItemFromHTML(html: string): WeiboItem[] {
 
     matches = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/.exec(ctText);
 
-    if (!matches) {
-      console.log('no matches5', ctText);
-      return;
-    }
+    let timestamp;
 
-    let timestamp = Date.parse(matches[0]);
+    if (matches) {
+      timestamp = Date.parse(matches[0]);
+    } else {
+      matches = /(\d+)月(\d+)日 (\d{2}):(\d{2})/.exec(ctText);
+
+      let date = new Date();
+
+      if (matches) {
+        let year = date.getFullYear();
+        timestamp = Date.parse(
+          `${year}-${matches[1]}-${matches[2]} ${matches[3]}:${matches[4]}`,
+        );
+      } else {
+        matches = /今天 (\d{2}):(\d{2})/.exec(ctText);
+
+        if (matches) {
+          let year = date.getFullYear();
+          let month = date.getMonth();
+          let day = date.getDate();
+
+          timestamp = Date.parse(
+            `${year}-${month}-${day} ${matches[1]}:${matches[2]}`,
+          );
+        } else {
+          matches = /(\d+)分钟前/.exec(ctText);
+
+          if (matches) {
+            timestamp = Date.now() - parseInt(matches[1]);
+          } else {
+            console.log('no matches5', ctText);
+            return;
+          }
+        }
+      }
+    }
 
     let item: WeiboItem = {
       uid,

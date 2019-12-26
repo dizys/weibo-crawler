@@ -22,3 +22,5 @@ coverage/
 # Testing files
 
 /test.*
+
+/outputs
