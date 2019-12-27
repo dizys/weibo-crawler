@@ -10,10 +10,10 @@ import {search, WeiboItem} from './crawler';
 main().catch(console.error);
 
 async function main() {
-  let keywords = '地震';
+  let keywords = '海啸';
   let category = keywords;
-  let startTime = 20190301;
-  let endTime = 20190330;
+  let startTime = 20190701;
+  let endTime = 20190730;
   let startPage = 1;
   let endPage = 100;
 
