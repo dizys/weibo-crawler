@@ -7,7 +7,7 @@
     "start": "ts-node --transpile-only --project src/tsconfig.json src/main.ts"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^1.6.0",
     "cheerio": "^1.0.0-rc.3",
     "es6-promise-pool": "^2.5.0",
     "fast-csv": "^4.3.6",
